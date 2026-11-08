@@ -1,0 +1,11 @@
+{
+  "name": "dadar-dash",
+  "version": "21.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node tests/smoke.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.58.2"
+  }
+}
