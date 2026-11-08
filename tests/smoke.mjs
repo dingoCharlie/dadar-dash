@@ -30,12 +30,12 @@ try {
       const rect=await page.locator('#game').boundingBox();
       assert.ok(rect&&rect.width>100&&rect.height>100,name+': canvas visible');
       const x=rect.x+rect.width*.65,y=rect.y+rect.height*.55;
-      await page.mouse.move(x,y);
-      await page.mouse.down();
+      const cdp=await ctx.newCDPSession(page);
+      await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
       await page.waitForTimeout(40);
       assert.equal(await page.locator('#joystick').evaluate(el=>el.classList.contains('active')),true,name+': floating control appears');
-      await page.mouse.move(x+50,y,{steps:4});
-      await page.mouse.up();
+      await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x+50,y}]});
+      await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
       assert.equal(await page.locator('#joystick').evaluate(el=>el.classList.contains('active')),false,name+': floating control disappears');
     } else {
       await page.keyboard.down('ArrowRight');await page.waitForTimeout(200);await page.keyboard.up('ArrowRight');
