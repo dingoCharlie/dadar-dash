@@ -110,7 +110,14 @@ html[data-theme="dark"] .themeToggle{background:#293744;border-color:#566673;col
 .resultScore .scoreValue{font-size:clamp(34px,7vw,48px);font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums;margin:7px 0 12px}
 .resultScore .scoreDetails{display:flex;justify-content:center;gap:20px;font-size:13px;font-weight:700}
 html[data-theme="dark"] .resultScore{background:#263e40;border-color:#567a73;color:#e6f5e9}
-</style></head><body><div class="shell"><header class="head"><div class="brand"><div class="brandmark">दादर<span>DADAR</span></div><div><h1>Dadar Dash <span style="color:#d99a39">●</span></h1><div class="subtitle">Western line <span aria-hidden="true">→</span> Central line</div></div></div><div class="stats"><button type="button" id="themeToggle" class="themeToggle" aria-label="Switch to light mode" aria-pressed="true">☀ Light</button><div class="stat"><small>Time</small><b id="timeLabel">0:00</b></div><div class="stat"><small id="pointsTitle">Deaths</small><b id="pointsLabel">0</b></div><div class="stat"><small>Best</small><b id="bestLabel">—</b></div></div></header><main class="gameframe" id="frame"><canvas id="game" aria-label="Top-down crowd avoidance game"></canvas><div class="hudtop"><div class="tag" id="locationTag">WESTERN LINE · START</div><div class="tag right" id="goalTag">REACH CENTRAL LINE →</div></div><div class="attemptToast" id="attemptToast" aria-live="polite"></div><div class="touchCue" id="touchCue">◎ TOUCH &amp; DRAG ANYWHERE <span>· release to stop</span></div><div class="controls"><div class="joystick" id="joystick"><div class="stick" id="stick"></div></div><button class="pauseTouch" id="pauseTouch" aria-label="Pause">Ⅱ</button></div><div class="overlay" id="overlay"><div class="panel"><div class="eyebrow" id="eyebrow">WELCOME TO DADAR · मुंबई</div><h2 id="panelTitle">Mind the crowd.</h2><p id="panelDescription">You've stepped off the Western Line at Dadar. Find your way across the station. One touch from a commuter and you’re back at the start.</p><div id="resultScore" class="resultScore" aria-live="polite"><div class="scoreLabel">Your crossing score</div><div class="scoreValue" id="finalScore">—</div><div class="scoreDetails"><span id="scoreAttempts"></span><span id="scoreTime"></span></div></div><button class="primary" id="playButton">Start crossing →</button><div class="hint" id="gameHint">Desktop: WASD / arrows · Mobile: touch and drag anywhere to move · lift to stop · P: pause</div></div></div></main><footer class="foot"><span>DADAR STATION · SURVIVAL MODE</span><div><button id="soundButton">♫ Sound: Off</button> <button id="restartButton">↻ Restart</button> <button id="menuButton">☰ Menu</button></div></footer></div><script>
+/* Personal-best card appears on the welcome/menu dialog, not during gameplay. */
+.bestScoreCard{display:none;margin:0 0 19px;padding:14px 16px;border:1px solid #d4dcca;border-radius:15px;background:#ecf2e7;color:#425c52;text-align:center}
+.bestScoreCard.visible{display:block}
+.bestScoreCard .bestScoreHeading{font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+.bestScoreCard .bestScoreValue{font-size:clamp(28px,6vw,38px);line-height:1.15;font-weight:800;margin:5px 0 1px;font-variant-numeric:tabular-nums}
+.bestScoreCard .bestScoreNote{font-size:12px;line-height:1.35;opacity:.8;margin:5px 0 0}
+html[data-theme="dark"] .bestScoreCard{background:#273b43;border-color:#56706b;color:#e0efe9}
+</style></head><body><div class="shell"><header class="head"><div class="brand"><div class="brandmark">दादर<span>DADAR</span></div><div><h1>Dadar Dash <span style="color:#d99a39">●</span></h1><div class="subtitle">Western line <span aria-hidden="true">→</span> Central line</div></div></div><div class="stats"><button type="button" id="themeToggle" class="themeToggle" aria-label="Switch to light mode" aria-pressed="true">☀ Light</button><div class="stat"><small>Time</small><b id="timeLabel">0:00</b></div><div class="stat"><small id="pointsTitle">Deaths</small><b id="pointsLabel">0</b></div><div class="stat"><small>Best</small><b id="bestLabel">—</b></div></div></header><main class="gameframe" id="frame"><canvas id="game" aria-label="Top-down crowd avoidance game"></canvas><div class="hudtop"><div class="tag" id="locationTag">WESTERN LINE · START</div><div class="tag right" id="goalTag">REACH CENTRAL LINE →</div></div><div class="attemptToast" id="attemptToast" aria-live="polite"></div><div class="touchCue" id="touchCue">◎ TOUCH &amp; DRAG ANYWHERE <span>· release to stop</span></div><div class="controls"><div class="joystick" id="joystick"><div class="stick" id="stick"></div></div><button class="pauseTouch" id="pauseTouch" aria-label="Pause">Ⅱ</button></div><div class="overlay" id="overlay"><div class="panel"><div class="eyebrow" id="eyebrow">WELCOME TO DADAR · मुंबई</div><h2 id="panelTitle">Mind the crowd.</h2><p id="panelDescription">You've stepped off the Western Line at Dadar. Find your way across the station. One touch from a commuter and you’re back at the start.</p><div id="bestScoreCard" class="bestScoreCard" aria-live="polite"><div class="bestScoreHeading">Your personal best</div><div class="bestScoreValue" id="bestScoreValue">—</div><div class="bestScoreNote" id="bestScoreNote">Complete your first crossing to set a score.</div></div><div id="resultScore" class="resultScore" aria-live="polite"><div class="scoreLabel">Your crossing score</div><div class="scoreValue" id="finalScore">—</div><div class="scoreDetails"><span id="scoreAttempts"></span><span id="scoreTime"></span></div></div><button class="primary" id="playButton">Start crossing →</button><div class="hint" id="gameHint">Desktop: WASD / arrows · Mobile: touch and drag anywhere to move · lift to stop · P: pause</div></div></div></main><footer class="foot"><span>DADAR STATION · SURVIVAL MODE</span><div><button id="soundButton">♫ Sound: Off</button> <button id="restartButton">↻ Restart</button> <button id="menuButton">☰ Menu</button></div></footer></div><script>
 (()=>{'use strict';
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d'),frame=document.getElementById('frame');
 const $=id=>document.getElementById(id),clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),rnd=(a,b)=>a+Math.random()*(b-a);
@@ -236,25 +243,32 @@ function updateHud(){ $('timeLabel').textContent=Math.floor(elapsed/60)+':'+Stri
  $('pointsTitle').textContent='Deaths';$('pointsLabel').textContent=deaths;
  $('goalTag').textContent=rush&&rush.phase==='warn'?'⚠ CROWD SURGE AHEAD':rush&&rush.phase==='active'?'⚡ RUSH WAVE':`RUSH ${Math.round(1+pressure*4+maxPressure*2)}/6 · ATTEMPT ${sessionAttempt}`;
  const n=sectionAt(player.x);$('locationTag').textContent=sectionNames[n]+' · '+(n+1)+'/3';}
-function start(){hideScore();loadBest();resetWorld();state='playing';$('overlay').classList.add('hidden');showTouchCue();beep(610,.12);}
-function menu(){hideScore();state='menu';$('eyebrow').textContent='WELCOME TO DADAR · मुंबई';$('panelTitle').textContent='Mind the crowd.';
+function start(){hideScore();hideBestScoreCard();loadBest();resetWorld();state='playing';$('overlay').classList.add('hidden');showTouchCue();beep(610,.12);}
+function menu(){hideScore();showBestScoreCard();state='menu';$('eyebrow').textContent='WELCOME TO DADAR · मुंबई';$('panelTitle').textContent='Mind the crowd.';
  $('panelDescription').textContent='Navigate flowing bends, station pillars and the foot overbridge. Crowds move across the turns, too. Watch for brief rush warnings in later sections. One collision sends you back to START.';
  $('playButton').textContent='Start crossing →';$('overlay').classList.remove('hidden');}
 function crossingScore(seconds,attempts){
  // Stable, diminishing penalty for failed attempts; no percentile normalization.
  return Math.round(10000*(60/(60+Math.max(0,seconds)))/(1+.12*(Math.max(1,attempts)-1)));
 }
+const bestScoreKey='dadardash-best-score-v27';
+function loadStoredBestScore(){try{const value=Number(localStorage.getItem(bestScoreKey));return Number.isInteger(value)&&value>0&&value<=10000?value:0;}catch(e){return 0;}}
+function savePersonalBest(score){const previous=loadStoredBestScore();if(score>previous){try{localStorage.setItem(bestScoreKey,String(score));}catch(e){}return true;}return false;}
+function showBestScoreCard(){const score=loadStoredBestScore();$('bestScoreValue').textContent=score?score.toLocaleString('en-IN'):'No score yet';$('bestScoreNote').textContent=score?'Beat your record with a faster, cleaner crossing.':'Complete your first crossing to set a score.';$('bestScoreCard').classList.add('visible');}
+function hideBestScoreCard(){$('bestScoreCard').classList.remove('visible');}
 function hideScore(){$('resultScore').classList.remove('visible');}
-function end(){state='ended';$('attemptToast').classList.remove('show');$('overlay').classList.remove('hidden');
+function end(){hideBestScoreCard();state='ended';$('attemptToast').classList.remove('show');$('overlay').classList.remove('hidden');
  const score=crossingScore(attemptTime,sessionAttempt);
+ const newBestScore=savePersonalBest(score);
  $('finalScore').textContent=score.toLocaleString('en-IN');
  $('scoreAttempts').textContent=`Attempt ${sessionAttempt}`;
  $('scoreTime').textContent=`${attemptTime.toFixed(1)} seconds`;
+ $('resultScore').querySelector('.scoreLabel').textContent=newBestScore?'New personal best!':'Your crossing score';
  $('resultScore').classList.add('visible');
  $('eyebrow').textContent='CENTRAL LINE · YOU MADE IT';$('panelTitle').textContent='Crossing complete!';
  $('panelDescription').textContent=`You crossed in ${attemptTime.toFixed(1)} seconds on attempt ${sessionAttempt}. Your score rewards faster crossings and fewer attempts. ${Math.abs(best-attemptTime)<.001?'New fastest crossing!':''}`;
  $('playButton').textContent='PLAY AGAIN →';beep(850,.15);}
-function pause(){if(state==='playing'){hideScore();state='paused';$('overlay').classList.remove('hidden');$('eyebrow').textContent='A SHORT PLATFORM STOP';$('panelTitle').textContent='Paused';$('panelDescription').textContent='The crowd will be right where you left it.';$('playButton').textContent='Resume →';}else if(state==='paused'){state='playing';$('overlay').classList.add('hidden');}}
+function pause(){if(state==='playing'){hideScore();hideBestScoreCard();state='paused';$('overlay').classList.remove('hidden');$('eyebrow').textContent='A SHORT PLATFORM STOP';$('panelTitle').textContent='Paused';$('panelDescription').textContent='The crowd will be right where you left it.';$('playButton').textContent='Resume →';}else if(state==='paused'){state='playing';$('overlay').classList.add('hidden');}}
 function maybeRush(dt){rushCooldown-=dt;
  if(rush){rush.timer-=dt;if(rush.phase==='warn'&&rush.timer<=0){rush.phase='active';rush.timer=2.1;const candidates=people.filter(p=>!p.stationary&&p.x>player.x+125&&p.x<player.x+850&&Math.random()<.42);for(const p of candidates)p.rushUntil=2.1;
  beep(650,.1);}else if(rush.phase==='active'&&rush.timer<=0){rush=null;rushCooldown=rnd(13,20);}}
@@ -452,7 +466,7 @@ function loop(now){
  draw(state==='playing'?accumulator/FIXED:1,frameDt);requestAnimationFrame(loop);
 }
 requestAnimationFrame(loop);
-$('playButton').onclick=()=>state==='paused'?pause():start();$('restartButton').onclick=()=>{hideScore();loadBest();resetWorld();state='playing';$('overlay').classList.add('hidden');showTouchCue();};
+$('playButton').onclick=()=>state==='paused'?pause():start();$('restartButton').onclick=()=>{hideBestScoreCard();hideScore();loadBest();resetWorld();state='playing';$('overlay').classList.add('hidden');showTouchCue();};
 $('menuButton').onclick=menu;$('pauseTouch').onclick=()=>{clearTouch();pause();};$('soundButton').onclick=()=>{audio=!audio;$('soundButton').textContent=audio?'♫ Sound: On':'♫ Sound: Off';beep(450,.07);};
 window.addEventListener('keydown',e=>{let k=e.key.toLowerCase();if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(k))e.preventDefault();keys.add(k);
  if((k==='p'||k==='escape')&&!e.repeat)pause();if(k==='enter'&&(state==='menu'||state==='ended'))start();});
@@ -484,5 +498,5 @@ canvas.addEventListener('pointermove',moveTouch);
 canvas.addEventListener('pointerup',endTouch);
 canvas.addEventListener('pointercancel',endTouch);
 canvas.addEventListener('lostpointercapture',e=>{if(e.pointerId===activeTouch)clearTouch();});
-loadBest();resetWorld();})();
+loadBest();resetWorld();showBestScoreCard();})();
 </script></body></html>
