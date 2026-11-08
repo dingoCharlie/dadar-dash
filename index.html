@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><title>Dadar Dash | Beat the Mumbai Rush</title>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><title>Dadar Dash | Beat the Mumbai Rush</title>
 <meta name="description" content="Dodge the crowds, navigate Dadar station, and make it to the other side. One collision and you're back to start!">
 <link rel="canonical" href="https://dadar-dash.vercel.app/">
 <meta property="og:type" content="website">
@@ -10,7 +10,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dadar Dash | Beat the Mumbai Rush">
 <meta name="twitter:description" content="Dodge the crowds, navigate Dadar station, and make it to the other side. One collision and you're back to start!">
-<style>
+<script>try{if(localStorage.getItem('dadar-dash-theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}</script><style>
 :root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#e8f0ff;background:#071320}*{box-sizing:border-box}body{margin:0;min-height:100svh;background:radial-gradient(circle at 50% -10%,#173451,#071320 65%);overflow:hidden}.shell{width:min(1120px,100vw);height:100svh;min-height:450px;margin:auto;display:flex;flex-direction:column;gap:8px;padding:10px 12px 12px}.head{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:10px}.brandmark{background:#f8b84e;color:#162132;font-size:13px;font-weight:950;padding:7px 9px;border-radius:10px;transform:rotate(-4deg)}h1{font-size:clamp(17px,2.6vw,24px);line-height:1;margin:0;letter-spacing:-.04em}.subtitle{font-size:11px;color:#99b1ca;margin-top:4px}.stats{display:flex;gap:6px;flex-wrap:wrap}.stat{border:1px solid #2b4057;background:#0d2031;padding:7px 11px;border-radius:11px;min-width:80px}.stat small{display:block;color:#85a4be;font-size:9px;text-transform:uppercase;letter-spacing:.1em}.stat b{font-size:15px;font-variant-numeric:tabular-nums}.gameframe{position:relative;flex:1;min-height:0;border-radius:18px;border:1px solid #354b65;overflow:hidden;background:#122536;box-shadow:0 15px 60px #0007}canvas{display:block;width:100%;height:100%;touch-action:none}.hudtop{position:absolute;top:12px;left:12px;right:12px;display:flex;justify-content:space-between;pointer-events:none;gap:8px}.tag{background:#081827dc;backdrop-filter:blur(6px);border:1px solid #324b60;border-radius:8px;padding:7px 9px;font-size:11px;font-weight:800;letter-spacing:.04em}.tag.right{color:#ffd17a}.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#04121cca;backdrop-filter:blur(5px);z-index:5;padding:15px}.panel{background:linear-gradient(155deg,#172d40,#0c1b2b);border:1px solid #45617b;box-shadow:0 20px 80px #0008;border-radius:20px;max-width:530px;width:100%;padding:clamp(18px,4vw,30px);text-align:center;max-height:100%;overflow:auto}.eyebrow{letter-spacing:.2em;text-transform:uppercase;color:#ffcb75;font-weight:800;font-size:11px}.panel h2{font-size:clamp(28px,5vw,42px);letter-spacing:-.06em;line-height:1.04;margin:12px 0}.panel p{color:#afc2d4;line-height:1.5;font-size:14px}.modes{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:18px 0}.mode{background:#0a1b2b;border:1px solid #364e61;border-radius:12px;padding:14px 10px;color:#dae6f2;cursor:pointer;text-align:left;font:inherit}.mode.active{border-color:#f7b654;background:#3a3026;box-shadow:inset 0 0 0 1px #f7b654}.mode strong{display:block;font-size:15px}.mode span{font-size:11px;color:#9cb1c7;display:block;margin-top:5px;line-height:1.4}.primary{background:#ffc45e;color:#152132;border:0;border-radius:12px;font:800 15px inherit;font-family:inherit;font-weight:900;padding:14px 18px;width:100%;cursor:pointer}.primary:hover{background:#ffda91}.hint{color:#84a0ba;font-size:11px;margin-top:12px}.foot{display:flex;justify-content:space-between;align-items:center;gap:8px;color:#84a0b8;font-size:11px}.foot button{background:#152b3e;color:#caddf0;border:1px solid #37516a;border-radius:9px;padding:7px 10px;cursor:pointer;font:inherit;font-weight:700}.controls{position:absolute;inset:0;pointer-events:none;z-index:2}.joystick{position:absolute;top:0;left:0;bottom:auto;right:auto;transform:translate(-50%,-50%);width:148px;height:148px;border:2px solid #e3f2ff4a;background:#0e2d4678;border-radius:50%;display:none;pointer-events:auto;touch-action:none}.stick{position:absolute;width:56px;height:56px;background:#ffca71c9;border:2px solid #ffe1ab;border-radius:50%;left:44px;top:44px;box-shadow:0 2px 10px #0006}.pauseTouch{position:absolute;bottom:18px;left:18px;display:none;pointer-events:auto;width:51px;height:51px;border-radius:50%;background:#102c43ce;border:1px solid #a7c7df88;color:#fff;font-size:20px}.hidden{display:none!important}@media(pointer:coarse){.pauseTouch{display:block}.shell{padding:5px;gap:5px}.stats .stat{min-width:65px;padding:5px 7px}.stat b{font-size:13px}.stat small{font-size:8px}.subtitle{display:none}.foot{font-size:10px}.hudtop{top:7px;left:7px;right:7px}.tag{padding:5px 7px;font-size:9px}}@media(max-width:560px){.brandmark{font-size:10px;padding:6px}.brand{gap:6px}h1{font-size:16px}.stats{gap:4px}.stats .stat{min-width:54px;padding:5px 6px}.stat b{font-size:12px}.stat small{font-size:7px}.shell{padding:4px}.gameframe{border-radius:12px}.panel{padding:20px}.modes{gap:6px}.mode{padding:11px 8px}.mode strong{font-size:13px}}
 @media(pointer:coarse) and (orientation:portrait){
 .shell{height:100dvh;min-height:0;padding:env(safe-area-inset-top,4px) 4px env(safe-area-inset-bottom,4px);gap:4px}
@@ -67,11 +67,65 @@ h1{font-size:clamp(21px,3vw,28px);font-weight:800;letter-spacing:-.045em;color:#
 .attemptToast{background:#fffaf0ed;color:#57676e;border:1px solid #e6d9ce}
 @media(pointer:coarse) and (orientation:portrait){.shell{gap:4px;padding:env(safe-area-inset-top,4px) 4px env(safe-area-inset-bottom,4px)}.head{padding:6px 8px;border-radius:12px}.brandmark{min-width:47px;min-height:33px;padding:4px;font-size:12px;border-radius:8px}.brandmark span{font-size:6px}h1{font-size:17px}.stat{min-width:46px;padding:4px 5px}.stat b{font-size:12px}.gameframe{border-radius:12px}.hudtop{left:6px;right:6px;top:6px}.tag{font-size:9px;padding:5px 6px}}
 @media(max-width:390px){.tag{font-size:8px}.stat{min-width:44px}.brand{gap:5px}}
-</style></head><body><div class="shell"><header class="head"><div class="brand"><div class="brandmark">दादर<span>DADAR</span></div><div><h1>Dadar Dash <span style="color:#d99a39">●</span></h1><div class="subtitle">Western line <span aria-hidden="true">→</span> Central line</div></div></div><div class="stats"><div class="stat"><small>Time</small><b id="timeLabel">0:00</b></div><div class="stat"><small id="pointsTitle">Deaths</small><b id="pointsLabel">0</b></div><div class="stat"><small>Best</small><b id="bestLabel">—</b></div></div></header><main class="gameframe" id="frame"><canvas id="game" aria-label="Top-down crowd avoidance game"></canvas><div class="hudtop"><div class="tag" id="locationTag">WESTERN LINE · START</div><div class="tag right" id="goalTag">REACH CENTRAL LINE →</div></div><div class="attemptToast" id="attemptToast" aria-live="polite"></div><div class="touchCue" id="touchCue">◎ TOUCH &amp; DRAG ANYWHERE <span>· release to stop</span></div><div class="controls"><div class="joystick" id="joystick"><div class="stick" id="stick"></div></div><button class="pauseTouch" id="pauseTouch" aria-label="Pause">Ⅱ</button></div><div class="overlay" id="overlay"><div class="panel"><div class="eyebrow" id="eyebrow">WELCOME TO DADAR · मुंबई</div><h2 id="panelTitle">Mind the crowd.</h2><p id="panelDescription">You've stepped off the Western Line at Dadar. Find your way across the station. One touch from a commuter and you’re back at the start.</p><button class="primary" id="playButton">Start crossing →</button><div class="hint" id="gameHint">Desktop: WASD / arrows · Mobile: touch and drag anywhere to move · lift to stop · P: pause</div></div></div></main><footer class="foot"><span>DADAR STATION · SURVIVAL MODE</span><div><button id="soundButton">♫ Sound: Off</button> <button id="restartButton">↻ Restart</button> <button id="menuButton">☰ Menu</button></div></footer></div><script>
+
+/* v25: dark-first station palette. Light mode retains the approved pastel scheme. */
+html[data-theme="dark"]{color-scheme:dark;background:#101923;color:#f0eee7}
+html[data-theme="dark"] body{background:#101923}
+html[data-theme="dark"] .head{background:#192531;border-color:#344250;box-shadow:0 5px 18px #03080c40}
+html[data-theme="dark"] h1{color:#f4f2e9}
+html[data-theme="dark"] .subtitle{color:#abbec7}
+html[data-theme="dark"] .brandmark{background:#e4b75b;color:#243344;border-color:#9e8d73}
+html[data-theme="dark"] .stat{background:#293744}
+html[data-theme="dark"] .stat small{color:#b3c0c8}
+html[data-theme="dark"] .stat b{color:#f0eee7}
+html[data-theme="dark"] .gameframe{background:#111d27;border-color:#374958;box-shadow:0 7px 26px #02090e4f}
+html[data-theme="dark"] .tag{background:#1b2a37ef;border-color:#445663;color:#e9eeeb;box-shadow:none}
+html[data-theme="dark"] .tag.right{background:#7c6037ed;color:#fff1d4;border-color:#96764b}
+html[data-theme="dark"] .overlay{background:#08121bbb}
+html[data-theme="dark"] .panel{background:#1c2b38;border-color:#495867;box-shadow:0 16px 50px #000a}
+html[data-theme="dark"] .eyebrow{background:#d6a854;color:#25313c;border-color:#e2bc70}
+html[data-theme="dark"] .panel h2{color:#f4f2eb}
+html[data-theme="dark"] .panel p{color:#bbc9d0}
+html[data-theme="dark"] .primary{background:#92cdb7;color:#19372d;box-shadow:0 4px 0 #578e7a}
+html[data-theme="dark"] .primary:hover{background:#a8dfc8}
+html[data-theme="dark"] .hint{color:#abb9be}
+html[data-theme="dark"] .foot{color:#a5b8c0}
+html[data-theme="dark"] .foot button{background:#273744;color:#f0eee7;border-color:#465967}
+html[data-theme="dark"] .foot button:hover{background:#334856}
+html[data-theme="dark"] .joystick,html[data-theme="dark"] .joystick.active{background:#668d9290;border-color:#c6e5dc9c;box-shadow:0 2px 12px #06141db0}
+html[data-theme="dark"] .stick{background:#e1b868e3;border-color:#fff1d1}
+html[data-theme="dark"] .pauseTouch{background:#263947e8;border-color:#789098;color:#f7f4e8}
+html[data-theme="dark"] .touchCue{background:#253542f2;color:#e9f3ee;border-color:#617679}
+html[data-theme="dark"] .touchCue span{color:#bdd5d2}
+html[data-theme="dark"] .attemptToast{background:#253544ed;color:#e5f0eb;border-color:#607079}
+.themeToggle{min-width:92px;min-height:36px;white-space:nowrap;border-radius:11px;border:1px solid #d1cabf;background:#fff8ec;color:#536372;font:700 12px Outfit,system-ui,sans-serif;padding:7px 10px;cursor:pointer}
+html[data-theme="dark"] .themeToggle{background:#293744;border-color:#566673;color:#f1ead9}
+.themeToggle:focus-visible{outline:2px solid #85caaf;outline-offset:3px}
+@media(max-width:560px){.themeToggle{min-width:0;min-height:30px;font-size:10px;padding:5px 7px}}
+</style></head><body><div class="shell"><header class="head"><div class="brand"><div class="brandmark">दादर<span>DADAR</span></div><div><h1>Dadar Dash <span style="color:#d99a39">●</span></h1><div class="subtitle">Western line <span aria-hidden="true">→</span> Central line</div></div></div><div class="stats"><button type="button" id="themeToggle" class="themeToggle" aria-label="Switch to light mode" aria-pressed="true">☀ Light</button><div class="stat"><small>Time</small><b id="timeLabel">0:00</b></div><div class="stat"><small id="pointsTitle">Deaths</small><b id="pointsLabel">0</b></div><div class="stat"><small>Best</small><b id="bestLabel">—</b></div></div></header><main class="gameframe" id="frame"><canvas id="game" aria-label="Top-down crowd avoidance game"></canvas><div class="hudtop"><div class="tag" id="locationTag">WESTERN LINE · START</div><div class="tag right" id="goalTag">REACH CENTRAL LINE →</div></div><div class="attemptToast" id="attemptToast" aria-live="polite"></div><div class="touchCue" id="touchCue">◎ TOUCH &amp; DRAG ANYWHERE <span>· release to stop</span></div><div class="controls"><div class="joystick" id="joystick"><div class="stick" id="stick"></div></div><button class="pauseTouch" id="pauseTouch" aria-label="Pause">Ⅱ</button></div><div class="overlay" id="overlay"><div class="panel"><div class="eyebrow" id="eyebrow">WELCOME TO DADAR · मुंबई</div><h2 id="panelTitle">Mind the crowd.</h2><p id="panelDescription">You've stepped off the Western Line at Dadar. Find your way across the station. One touch from a commuter and you’re back at the start.</p><button class="primary" id="playButton">Start crossing →</button><div class="hint" id="gameHint">Desktop: WASD / arrows · Mobile: touch and drag anywhere to move · lift to stop · P: pause</div></div></div></main><footer class="foot"><span>DADAR STATION · SURVIVAL MODE</span><div><button id="soundButton">♫ Sound: Off</button> <button id="restartButton">↻ Restart</button> <button id="menuButton">☰ Menu</button></div></footer></div><script>
 (()=>{'use strict';
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d'),frame=document.getElementById('frame');
 const $=id=>document.getElementById(id),clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),rnd=(a,b)=>a+Math.random()*(b-a);
 const W=4600,H=1100,START_X=47,GOAL_X=4480,BOX_W=74,BOX_H=220;
+// Dark-first appearance. Theme never changes simulation or hitboxes.
+const LIGHT_SCENE={outside:'#d8dfdf',rail:'#71828e',railTie:'#d3d7d8',rim:'#90aeb0',floor:'#faeee4',grid:'#d9bfb24d',safety:'#ebba6caa',stair:'#b4c3c380',sign:'#586d7c',signSub:'#80929b',arrow:'#9bb3ae',pillar:'#c79f8c',pillarTop:'#718d96',start:'#7bc9ad70',goal:'#a8cfe977',startText:'#2c806b',goalText:'#487eaa',goalWall:'#74adcf',goalEntry:'#8ad4c7',progressBg:'#d3d9d5',progressFg:'#78c7ad'};
+const DARK_SCENE={outside:'#111d27',rail:'#536577',railTie:'#8795a0',rim:'#566c73',floor:'#293e4b',grid:'#8ca0a021',safety:'#d7a958ba',stair:'#7e9aa35e',sign:'#dfdac7',signSub:'#a6b7bc',arrow:'#91b2ad',pillar:'#a67e70',pillarTop:'#687f89',start:'#55a48b78',goal:'#699fba80',startText:'#a0e4cd',goalText:'#b8deed',goalWall:'#8ebbd7',goalEntry:'#81cfbd',progressBg:'#54646a',progressFg:'#99d3bc'};
+let sceneColors=DARK_SCENE;
+let currentTheme='dark';
+const themeToggle=$('themeToggle');
+function setTheme(theme,persist=true){
+ currentTheme=theme==='light'?'light':'dark';
+ document.documentElement.dataset.theme=currentTheme;
+ sceneColors=currentTheme==='dark'?DARK_SCENE:LIGHT_SCENE;
+ themeToggle.textContent=currentTheme==='dark'?'☀ Light':'☾ Dark';
+ themeToggle.setAttribute('aria-label',currentTheme==='dark'?'Switch to light mode':'Switch to dark mode');
+ themeToggle.setAttribute('aria-pressed',String(currentTheme==='dark'));
+ if(persist){try{localStorage.setItem('dadar-dash-theme',currentTheme)}catch(e){}}
+}
+let savedTheme='dark';try{savedTheme=localStorage.getItem('dadar-dash-theme')||'dark'}catch(e){}
+setTheme(savedTheme,false);
+themeToggle.addEventListener('click',()=>setTheme(currentTheme==='dark'?'light':'dark'));
+
 // v24: continuous flowing S-bends inspired by the hand-drawn B route.
 // This centerline is shared by BOTH rendering and physics; no visual-only shortcuts.
 const knots=[
@@ -319,37 +373,37 @@ function draw(alpha=1,renderDt=1/60){ctx.clearRect(0,0,cw,ch);
  const minY=cam.y-110,maxY=cam.y+viewH+110;
  ctx.save();if(portrait){ctx.translate(0,ch);ctx.rotate(-Math.PI/2);ctx.scale(scale,scale);}else ctx.scale(scale,scale);
  ctx.translate(-cam.x,-cam.y);
- ctx.fillStyle='#d8dfdf';ctx.fillRect(-500,-500,W+1000,H+1000);
+ ctx.fillStyle=sceneColors.outside;ctx.fillRect(-500,-500,W+1000,H+1000);
  // Railway tracks cross PERPENDICULAR to the transfer route, as seen in v13.
  for(let tx of [310,345,1170,1205,2700,2735,4220,4255]){if(tx<minX-50||tx>maxX+50)continue;
-   ctx.fillStyle='#71828e';ctx.fillRect(tx,-300,14,H+600);
-   ctx.fillStyle='#d3d7d8';for(let yy=-280;yy<H+300;yy+=46)ctx.fillRect(tx-5,yy,24,10);
+   ctx.fillStyle=sceneColors.rail;ctx.fillRect(tx,-300,14,H+600);
+   ctx.fillStyle=sceneColors.railTie;for(let yy=-280;yy<H+300;yy+=46)ctx.fillRect(tx-5,yy,24,10);
  }
  // Restore v13's light tiled platform, dark platform edging and station markings.
- ctx.save();ctx.lineJoin='round';ctx.lineCap='round';ctx.lineWidth=23;ctx.strokeStyle='#90aeb0';ctx.stroke(platformPath);ctx.fillStyle='#faeee4';ctx.fill(platformPath);ctx.clip(platformPath);
- ctx.strokeStyle='#d9bfb24d';ctx.lineWidth=1.5;
+ ctx.save();ctx.lineJoin='round';ctx.lineCap='round';ctx.lineWidth=23;ctx.strokeStyle=sceneColors.rim;ctx.stroke(platformPath);ctx.fillStyle=sceneColors.floor;ctx.fill(platformPath);ctx.clip(platformPath);
+ ctx.strokeStyle=sceneColors.grid;ctx.lineWidth=1.5;
  for(let x=Math.max(30,Math.floor(minX/43)*43);x<Math.min(W,maxX);x+=43){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
  for(let y=Math.max(15,Math.floor(minY/43)*43);y<Math.min(H,maxY);y+=43){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
  // Yellow safety lines and stair treads return from v13.
- ctx.strokeStyle='#ebba6caa';ctx.lineWidth=7;
+ ctx.strokeStyle=sceneColors.safety;ctx.lineWidth=7;
  for(let xx of [360,1640,2820,4050]){if(xx<minX||xx>maxX)continue;const a=road(xx);ctx.beginPath();ctx.moveTo(xx,a.y-a.hw+22);ctx.lineTo(xx,a.y+a.hw-22);ctx.stroke();}
  for(let xx of [890,2010,3190]){if(xx<minX-150||xx>maxX)continue;for(let k=0;k<11;k++){
- const x=xx+k*13,a=road(x);ctx.fillStyle='#b4c3c380';ctx.fillRect(x,a.y-a.hw+33,4,a.hw*2-66);
+ const x=xx+k*13,a=road(x);ctx.fillStyle=sceneColors.stair;ctx.fillRect(x,a.y-a.hw+33,4,a.hw*2-66);
  }}
  ctx.restore();
  // Station signage and navigation arrows on the cream tiles.
  for(let i=0;i<3;i++){
    const x=i*1500+155;if(x<minX||x>maxX)continue;const a=road(x);
-   label(sectionNames[i],x,a.y-a.hw+55,22,'#586d7c');
-   label('SECTION '+(i+1)+' / 3',x,a.y-a.hw+79,16,'#80929b');
+   label(sectionNames[i],x,a.y-a.hw+55,22,sceneColors.sign);
+   label('SECTION '+(i+1)+' / 3',x,a.y-a.hw+79,16,sceneColors.signSub);
  }
- for(let xx=Math.max(430,430+Math.floor((minX-430)/290)*290);xx<Math.min(GOAL_X,maxX);xx+=290){const a=road(xx);label('➜',xx,a.y+8,26,'#9bb3ae','center');}
- for(const o of obstacles){if(o.x+o.w<minX||o.x>maxX||o.y+o.h<minY||o.y>maxY)continue;rect(o.x,o.y,o.w,o.h,5,'#c79f8c');rect(o.x+6,o.y+5,Math.max(4,o.w-12),Math.max(4,o.h-10),3,'#718d96');}
- rect(START_X,490-BOX_H/2,BOX_W,BOX_H,10,'#7bc9ad70');rect(GOAL_X,490-BOX_H/2,BOX_W,BOX_H,10,'#a8cfe977');
- label('START',START_X+10,487,14,'#2c806b');label('GOAL',GOAL_X+12,487,14,'#487eaa');
+ for(let xx=Math.max(430,430+Math.floor((minX-430)/290)*290);xx<Math.min(GOAL_X,maxX);xx+=290){const a=road(xx);label('➜',xx,a.y+8,26,sceneColors.arrow,'center');}
+ for(const o of obstacles){if(o.x+o.w<minX||o.x>maxX||o.y+o.h<minY||o.y>maxY)continue;rect(o.x,o.y,o.w,o.h,5,sceneColors.pillar);rect(o.x+6,o.y+5,Math.max(4,o.w-12),Math.max(4,o.h-10),3,sceneColors.pillarTop);}
+ rect(START_X,490-BOX_H/2,BOX_W,BOX_H,10,sceneColors.start);rect(GOAL_X,490-BOX_H/2,BOX_W,BOX_H,10,sceneColors.goal);
+ label('START',START_X+10,487,14,sceneColors.startText);label('GOAL',GOAL_X+12,487,14,sceneColors.goalText);
  // Closed top, bottom and back walls of the finish zone. Only entry from left.
- ctx.strokeStyle='#74adcf';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(GOAL_X,490-BOX_H/2);ctx.lineTo(GOAL_X+BOX_W,490-BOX_H/2);ctx.lineTo(GOAL_X+BOX_W,490+BOX_H/2);ctx.lineTo(GOAL_X,490+BOX_H/2);ctx.stroke();
- ctx.strokeStyle='#8ad4c7';ctx.beginPath();ctx.moveTo(GOAL_X,490-BOX_H/2+12);ctx.lineTo(GOAL_X,490+BOX_H/2-12);ctx.stroke();
+ ctx.strokeStyle=sceneColors.goalWall;ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(GOAL_X,490-BOX_H/2);ctx.lineTo(GOAL_X+BOX_W,490-BOX_H/2);ctx.lineTo(GOAL_X+BOX_W,490+BOX_H/2);ctx.lineTo(GOAL_X,490+BOX_H/2);ctx.stroke();
+ ctx.strokeStyle=sceneColors.goalEntry;ctx.beginPath();ctx.moveTo(GOAL_X,490-BOX_H/2+12);ctx.lineTo(GOAL_X,490+BOX_H/2-12);ctx.stroke();
  if(rush){ctx.globalAlpha=rush.phase==='warn'?.28:.14;ctx.fillStyle=rush.phase==='warn'?'#ffb95e':'#fa785b';
  let from=player.x+120,to=player.x+830;for(let x=Math.max(from,Math.floor(minX/22)*22);x<Math.min(to,maxX);x+=22){let a=road(x);ctx.fillRect(x,a.y-a.hw,14,a.hw*2);}ctx.globalAlpha=1;}
  // Cached faux-isometric commuter sprites: exactly one drawImage per visible person.
@@ -367,7 +421,7 @@ function draw(alpha=1,renderDt=1/60){ctx.clearRect(0,0,cw,ch);
  }
  for(let p of particles){ctx.globalAlpha=Math.min(1,p.life*3);ctx.fillStyle='#e6bb88';ctx.beginPath();ctx.arc(p.x,p.y,4,0,Math.PI*2);ctx.fill();}ctx.globalAlpha=1;ctx.restore();
  if(flash){ctx.fillStyle=`rgba(255,120,112,${flash*.32})`;ctx.fillRect(0,0,cw,ch);}
- rect(cw*.2,ch-14,cw*.6,5,3,'#d3d9d5');rect(cw*.2,ch-14,cw*.6*clamp((player.x-93)/(GOAL_X-93),0,1),5,3,'#78c7ad');}
+ rect(cw*.2,ch-14,cw*.6,5,3,sceneColors.progressBg);rect(cw*.2,ch-14,cw*.6*clamp((player.x-93)/(GOAL_X-93),0,1),5,3,sceneColors.progressFg);}
 // Fixed 60 Hz simulation decouples gameplay from variable mobile render frame times.
 let last=performance.now(),accumulator=0;
 const FIXED=1/60;
