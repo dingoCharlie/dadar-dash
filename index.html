@@ -344,7 +344,11 @@ function steerCrowd(p,dt){if(p.willStop&&((p.dir===1&&p.x>=p.stopX)||(p.dir===-1
 }
 function update(dt){player.prevX=player.x;player.prevY=player.y;for(const p of people){p.prevX=p.x;p.prevY=p.y;}toastClock=Math.max(0,toastClock-dt);if(toastClock===0)$('attemptToast').classList.remove('show');
  runBestDistance=Math.max(runBestDistance,clamp((player.x-93)/(GOAL_X-93),0,1));
- const sm=Math.min(1,dt*11);move.x+=(targetMove.x-move.x)*sm;move.y+=(targetMove.y-move.y)*sm;
+ // Fast directional changes without altering normal acceleration or top speed.
+ const currentMag=Math.hypot(move.x,move.y),targetMag=Math.hypot(targetMove.x,targetMove.y);
+ const alignment=currentMag>.08&&targetMag>.08?(move.x*targetMove.x+move.y*targetMove.y)/(currentMag*targetMag):1;
+ const turning=alignment<.5;
+ const sm=Math.min(1,dt*(turning?45:11));move.x+=(targetMove.x-move.x)*sm;move.y+=(targetMove.y-move.y)*sm;
  elapsed+=dt;attemptTime+=dt;spawnClock+=dt;invincible=Math.max(0,invincible-dt);flash=Math.max(0,flash-dt);shake=Math.max(0,shake-30*dt);
  let dx=(keys.has('arrowright')||keys.has('d')?1:0)-(keys.has('arrowleft')||keys.has('a')?1:0)+move.x;
  let dy=(keys.has('arrowdown')||keys.has('s')?1:0)-(keys.has('arrowup')||keys.has('w')?1:0)+move.y;
@@ -508,7 +512,7 @@ const joy=$('joystick'),stick=$('stick'),touchCue=$('touchCue');
 let activeTouch=null,anchor=null;
 function showTouchCue(){if(window.matchMedia('(pointer: coarse)').matches)touchCue.classList.add('visible');}
 function hideTouchCue(){touchCue.classList.remove('visible');}
-function steerVector(dx,dy,maxDist){let dist=Math.hypot(dx,dy),dead=14;if(dist<=dead)return {x:0,y:0};let t=clamp((dist-dead)/(maxDist-dead),0,1),response=t*t*(3-2*t);return {x:dx/dist*response,y:dy/dist*response};}
+function steerVector(dx,dy,maxDist){let dist=Math.hypot(dx,dy),dead=10;if(dist<=dead)return {x:0,y:0};let t=clamp((dist-dead)/(maxDist-dead),0,1),response=t*t*(3-2*t);return {x:dx/dist*response,y:dy/dist*response};}
 function orientInput(v){return portrait?{x:-v.y,y:v.x}:v;}
 function clearTouch(){activeTouch=null;anchor=null;targetMove={x:0,y:0};move={x:0,y:0};joy.classList.remove('active');stick.style.transform='translate(0,0)';}
 function startTouch(e){
