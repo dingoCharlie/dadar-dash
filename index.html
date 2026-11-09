@@ -271,8 +271,7 @@ let lastCrossingShare='';
 $('shareWhatsappButton').addEventListener('click',()=>{
  if(state!=='ended'||!lastCrossingShare)return;
  const url='https://wa.me/?text='+encodeURIComponent(lastCrossingShare);
- const popup=window.open(url,'_blank','noopener,noreferrer');
- if(!popup && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent))window.location.href=url;
+ window.open(url,'_blank','noopener,noreferrer');
 });
 function end(){hideBestScoreCard();state='ended';$('attemptToast').classList.remove('show');$('overlay').classList.remove('hidden');
  const score=crossingScore(attemptTime,sessionAttempt);
