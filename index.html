@@ -110,6 +110,12 @@ html[data-theme="dark"] .themeToggle{background:#293744;border-color:#566673;col
 .resultScore .scoreValue{font-size:clamp(34px,7vw,48px);font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums;margin:7px 0 12px}
 .resultScore .scoreDetails{display:flex;justify-content:center;gap:20px;font-size:13px;font-weight:700}
 html[data-theme="dark"] .resultScore{background:#263e40;border-color:#567a73;color:#e6f5e9}
+/* Completion-only WhatsApp share control; no runtime render overhead. */
+.whatsappShare{display:none;width:100%;margin:12px 0 0;padding:13px 16px;border:1px solid #5baf83;border-radius:14px;background:#d9f2df;color:#175c39;font:700 15px Outfit,system-ui,sans-serif;cursor:pointer;min-height:48px}
+.whatsappShare.visible{display:block}
+.whatsappShare:hover,.whatsappShare:focus-visible{background:#c5e9d0}
+html[data-theme="dark"] .whatsappShare{background:#275542;color:#e2f9e9;border-color:#589b75}
+html[data-theme="dark"] .whatsappShare:hover,html[data-theme="dark"] .whatsappShare:focus-visible{background:#316a50}
 /* Personal-best card appears on the welcome/menu dialog, not during gameplay. */
 .bestScoreCard{display:none;margin:0 0 19px;padding:14px 16px;border:1px solid #d4dcca;border-radius:15px;background:#ecf2e7;color:#425c52;text-align:center}
 .bestScoreCard.visible{display:block}
@@ -117,7 +123,7 @@ html[data-theme="dark"] .resultScore{background:#263e40;border-color:#567a73;col
 .bestScoreCard .bestScoreValue{font-size:clamp(28px,6vw,38px);line-height:1.15;font-weight:800;margin:5px 0 1px;font-variant-numeric:tabular-nums}
 .bestScoreCard .bestScoreNote{font-size:12px;line-height:1.35;opacity:.8;margin:5px 0 0}
 html[data-theme="dark"] .bestScoreCard{background:#273b43;border-color:#56706b;color:#e0efe9}
-</style></head><body><div class="shell"><header class="head"><div class="brand"><div class="brandmark">दादर<span>DADAR</span></div><div><h1>Dadar Dash <span style="color:#d99a39">●</span></h1><div class="subtitle">Western line <span aria-hidden="true">→</span> Central line</div></div></div><div class="stats"><button type="button" id="themeToggle" class="themeToggle" aria-label="Switch to light mode" aria-pressed="true">☀ Light</button><div class="stat"><small>Time</small><b id="timeLabel">0:00</b></div><div class="stat"><small id="pointsTitle">Deaths</small><b id="pointsLabel">0</b></div><div class="stat"><small>Best</small><b id="bestLabel">—</b></div></div></header><main class="gameframe" id="frame"><canvas id="game" aria-label="Top-down crowd avoidance game"></canvas><div class="hudtop"><div class="tag" id="locationTag">WESTERN LINE · START</div><div class="tag right" id="goalTag">REACH CENTRAL LINE →</div></div><div class="attemptToast" id="attemptToast" aria-live="polite"></div><div class="touchCue" id="touchCue">◎ TOUCH &amp; DRAG ANYWHERE <span>· release to stop</span></div><div class="controls"><div class="joystick" id="joystick"><div class="stick" id="stick"></div></div><button class="pauseTouch" id="pauseTouch" aria-label="Pause">Ⅱ</button></div><div class="overlay" id="overlay"><div class="panel"><div class="eyebrow" id="eyebrow">WELCOME TO DADAR · मुंबई</div><h2 id="panelTitle">Mind the crowd.</h2><p id="panelDescription">You've stepped off the Western Line at Dadar. Find your way across the station. One touch from a commuter and you’re back at the start.</p><div id="bestScoreCard" class="bestScoreCard" aria-live="polite"><div class="bestScoreHeading">Your personal best</div><div class="bestScoreValue" id="bestScoreValue">—</div><div class="bestScoreNote" id="bestScoreNote">Complete your first crossing to set a score.</div></div><div id="resultScore" class="resultScore" aria-live="polite"><div class="scoreLabel">Your crossing score</div><div class="scoreValue" id="finalScore">—</div><div class="scoreDetails"><span id="scoreAttempts"></span><span id="scoreTime"></span></div></div><button class="primary" id="playButton">Start crossing →</button><div class="hint" id="gameHint">Desktop: WASD / arrows · Mobile: touch and drag anywhere to move · lift to stop · P: pause</div></div></div></main><footer class="foot"><span>DADAR STATION · SURVIVAL MODE</span><div><button id="soundButton">♫ Sound: Off</button> <button id="restartButton">↻ Restart</button> <button id="menuButton">☰ Menu</button></div></footer></div><script>
+</style></head><body><div class="shell"><header class="head"><div class="brand"><div class="brandmark">दादर<span>DADAR</span></div><div><h1>Dadar Dash <span style="color:#d99a39">●</span></h1><div class="subtitle">Western line <span aria-hidden="true">→</span> Central line</div></div></div><div class="stats"><button type="button" id="themeToggle" class="themeToggle" aria-label="Switch to light mode" aria-pressed="true">☀ Light</button><div class="stat"><small>Time</small><b id="timeLabel">0:00</b></div><div class="stat"><small id="pointsTitle">Deaths</small><b id="pointsLabel">0</b></div><div class="stat"><small>Best</small><b id="bestLabel">—</b></div></div></header><main class="gameframe" id="frame"><canvas id="game" aria-label="Top-down crowd avoidance game"></canvas><div class="hudtop"><div class="tag" id="locationTag">WESTERN LINE · START</div><div class="tag right" id="goalTag">REACH CENTRAL LINE →</div></div><div class="attemptToast" id="attemptToast" aria-live="polite"></div><div class="touchCue" id="touchCue">◎ TOUCH &amp; DRAG ANYWHERE <span>· release to stop</span></div><div class="controls"><div class="joystick" id="joystick"><div class="stick" id="stick"></div></div><button class="pauseTouch" id="pauseTouch" aria-label="Pause">Ⅱ</button></div><div class="overlay" id="overlay"><div class="panel"><div class="eyebrow" id="eyebrow">WELCOME TO DADAR · मुंबई</div><h2 id="panelTitle">Mind the crowd.</h2><p id="panelDescription">You've stepped off the Western Line at Dadar. Find your way across the station. One touch from a commuter and you’re back at the start.</p><div id="bestScoreCard" class="bestScoreCard" aria-live="polite"><div class="bestScoreHeading">Your personal best</div><div class="bestScoreValue" id="bestScoreValue">—</div><div class="bestScoreNote" id="bestScoreNote">Complete your first crossing to set a score.</div></div><div id="resultScore" class="resultScore" aria-live="polite"><div class="scoreLabel">Your crossing score</div><div class="scoreValue" id="finalScore">—</div><div class="scoreDetails"><span id="scoreAttempts"></span><span id="scoreTime"></span></div></div><button class="primary" id="playButton">Start crossing →</button><button type="button" id="shareWhatsappButton" class="whatsappShare" aria-label="Share your score on WhatsApp">↗ Share score on WhatsApp</button><div class="hint" id="gameHint">Desktop: WASD / arrows · Mobile: touch and drag anywhere to move · lift to stop · P: pause</div></div></div></main><footer class="foot"><span>DADAR STATION · SURVIVAL MODE</span><div><button id="soundButton">♫ Sound: Off</button> <button id="restartButton">↻ Restart</button> <button id="menuButton">☰ Menu</button></div></footer></div><script>
 (()=>{'use strict';
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d'),frame=document.getElementById('frame');
 const $=id=>document.getElementById(id),clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),rnd=(a,b)=>a+Math.random()*(b-a);
@@ -256,15 +262,26 @@ function loadStoredBestScore(){try{const value=Number(localStorage.getItem(bestS
 function savePersonalBest(score){const previous=loadStoredBestScore();if(score>previous){try{localStorage.setItem(bestScoreKey,String(score));}catch(e){}return true;}return false;}
 function showBestScoreCard(){const score=loadStoredBestScore();$('bestScoreValue').textContent=score?score.toLocaleString('en-IN'):'No score yet';$('bestScoreNote').textContent=score?'Beat your record with a faster, cleaner crossing.':'Complete your first crossing to set a score.';$('bestScoreCard').classList.add('visible');}
 function hideBestScoreCard(){$('bestScoreCard').classList.remove('visible');}
-function hideScore(){$('resultScore').classList.remove('visible');}
+function hideScore(){$('resultScore').classList.remove('visible');$('shareWhatsappButton').classList.remove('visible');}
+// WhatsApp receives the score only after the player explicitly taps Share.
+function whatsappScoreMessage(score,seconds,attempts){
+ return `🚉 I scored ${score.toLocaleString('en-IN')} points on Dadar Dash!\n🏃 Crossed Dadar station in ${seconds.toFixed(1)} seconds on attempt ${attempts}.\n\nThink you can beat my score? 😎\n🎮 Play here: https://dadar-dash.vercel.app/`;
+}
+let lastCrossingShare='';
+$('shareWhatsappButton').addEventListener('click',()=>{
+ if(state!=='ended'||!lastCrossingShare)return;
+ const url='https://wa.me/?text='+encodeURIComponent(lastCrossingShare);
+ window.open(url,'_blank','noopener,noreferrer');
+});
 function end(){hideBestScoreCard();state='ended';$('attemptToast').classList.remove('show');$('overlay').classList.remove('hidden');
  const score=crossingScore(attemptTime,sessionAttempt);
+ lastCrossingShare=whatsappScoreMessage(score,attemptTime,sessionAttempt);
  const newBestScore=savePersonalBest(score);
  $('finalScore').textContent=score.toLocaleString('en-IN');
  $('scoreAttempts').textContent=`Attempt ${sessionAttempt}`;
  $('scoreTime').textContent=`${attemptTime.toFixed(1)} seconds`;
  $('resultScore').querySelector('.scoreLabel').textContent=newBestScore?'New personal best!':'Your crossing score';
- $('resultScore').classList.add('visible');
+ $('resultScore').classList.add('visible');$('shareWhatsappButton').classList.add('visible');
  $('eyebrow').textContent='CENTRAL LINE · YOU MADE IT';$('panelTitle').textContent='Crossing complete!';
  $('panelDescription').textContent=`You crossed in ${attemptTime.toFixed(1)} seconds on attempt ${sessionAttempt}. Your score rewards faster crossings and fewer attempts. ${Math.abs(best-attemptTime)<.001?'New fastest crossing!':''}`;
  $('playButton').textContent='PLAY AGAIN →';beep(850,.15);}
